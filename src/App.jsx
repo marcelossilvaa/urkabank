@@ -6,25 +6,8 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Conta from './pages/Conta'
 import ContaInfo from './pages/ContaInfo'
-import { createContext } from 'react'
-import PropTypes from 'prop-types';
+import { AppContextProvider } from './components/AppContext'
 
-
-export const AppContext = createContext({ user: '' })
-
-const AppContextProvider = ({ children }) => {
-  const user = 'marce';
-
-  return (
-    <AppContext.Provider value={{ user }}>
-      {children}
-    </AppContext.Provider>
-  );
-}
-
-AppContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default function App() {
   return (

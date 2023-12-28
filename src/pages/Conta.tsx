@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import CardInfo from "../components/CardInfo"
 import { api } from "../api"
-import { AppContext } from "../App"
+import { AppContext } from "../components/AppContext";
+import toast, { Toaster } from "react-hot-toast"
 
 interface UserData{
   email: string
@@ -16,9 +17,17 @@ interface UserData{
 const Conta = () => {
 
   const [ userData, setUserData ] = useState<null | UserData>()
+  const {id} = useParams()
+  const navigate = useNavigate() 
 
-  const context = useContext(AppContext)
-  console.log('retorno da página conta', context)
+  const { isLoggedIn } = useContext(AppContext)
+  console.log('retorno da página conta', isLoggedIn)
+
+  !isLoggedIn && navigate('/')
+
+  if(!isLoggedIn){
+    toast.error("Não foi possível logar")
+  }
   
   useEffect(() => {
     const getData = async () => {
@@ -33,8 +42,6 @@ const Conta = () => {
   const formattedTime = actualData.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   const formattedDate = `${actualData.toLocaleDateString()} ${formattedTime}`;
   
-  const {id} = useParams()
-  const navigate = useNavigate() 
 
   if(userData && id !== userData.id){
     navigate('/')
@@ -59,6 +66,10 @@ const Conta = () => {
           )
         }
       </Box>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
     </Center>
     
   )
