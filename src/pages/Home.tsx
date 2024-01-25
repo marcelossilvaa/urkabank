@@ -16,11 +16,12 @@ const Home = () => {
     const loggedIn = await login(email)
 
     if(!loggedIn){
-      toast.error("Email inválido")
-    } else {
-      setIsLoggedIn(true)
-      navigate('/conta/1')
+      return toast.error("Email inválido")
     }
+    
+    setIsLoggedIn(true)
+    navigate('/conta/1')
+
 
     
   }
