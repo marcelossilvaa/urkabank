@@ -1,25 +1,22 @@
-import { createContext } from 'react'
-import PropTypes from 'prop-types';
+import { createContext, useState } from 'react'
 import React from 'react';
 
 interface IAppContext {
   user: string,
   isLoggedIn: boolean,
+  setIsLoggedIn: (isLoggedIn: boolean) => void
 }
 
 export const AppContext = createContext({} as IAppContext)
 
-export const AppContextProvider = ({ children }) => {
+export const AppContextProvider = ({ children }: any) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  
   const user = 'marce';
-  const isLoggedIn = false
   
   return (
-    <AppContext.Provider value={{ user, isLoggedIn }}>
+    <AppContext.Provider value={{ user, isLoggedIn, setIsLoggedIn }}>
       {children}
     </AppContext.Provider>
   );
-}
-
-AppContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 }
