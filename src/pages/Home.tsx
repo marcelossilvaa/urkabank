@@ -1,11 +1,12 @@
 import {Box, Center, Input} from '@chakra-ui/react'
 import Card from '../components/Card'
-import React, { MouseEventHandler, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { login } from "../services/login";
 import { DButton } from "../components/DButton";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../components/AppContext';
+import { changeLocalStorage } from '../services/storage'
 
 const Home = () => {
   const [email, setEmail] = useState<string>('')
@@ -20,10 +21,8 @@ const Home = () => {
     }
     
     setIsLoggedIn(true)
+    changeLocalStorage({login: true})
     navigate('/conta/1')
-
-
-    
   }
   
   return(

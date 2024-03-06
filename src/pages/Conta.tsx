@@ -21,7 +21,6 @@ const Conta = () => {
   const navigate = useNavigate() 
 
   const { isLoggedIn } = useContext(AppContext)
-  console.log('retorno da página conta', isLoggedIn)
 
   !isLoggedIn && navigate('/')
 

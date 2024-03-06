@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
+import { changeLocalStorage } from "../services/storage";
 
 
 export default function Header(){
@@ -9,6 +10,7 @@ export default function Header(){
   const navigate = useNavigate()
 
   const logout = () => {
+    changeLocalStorage({login: false})
     setIsLoggedIn(false)
     navigate('/')
   }
