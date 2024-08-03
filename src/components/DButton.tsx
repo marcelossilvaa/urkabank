@@ -9,7 +9,7 @@ export const DButton = ({ onClick }: IDButton) => {
   return(
     <Button
       onClick={onClick}
-      className='bg-teal-500 w-full mt-2'
+      className='bg-teal-500 w-full'
     >
       Entrar
     </Button>

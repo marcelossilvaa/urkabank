@@ -15,10 +15,10 @@ export default function Header(){
     navigate('/')
   }
   return(
-      <header className="bg-orange-500 flex justify-between items-center px-4 py-1">
+      <header className="bg-gray-900 text-white flex justify-between items-center px-4 py-1">
         <div>
           <Link to={'/'}>
-            <div className="text-4xl">
+            <div className="text-2xl">
               _UrkaBank
             </div>
           </Link>

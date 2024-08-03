@@ -6,7 +6,7 @@ export default function Layout({children}: any){
   return(
     <main >
       <Header />
-        <div  className="bg-[#9413dc] min-h-[89vh]">
+        <div  className="bg-gray-800 min-h-[89vh]">
           {children}
         </div>
       <Footer />
